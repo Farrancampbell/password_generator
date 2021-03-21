@@ -36,17 +36,20 @@ function generatePassword() {
         numberConfirm = confirm("Do you want numbers?");
         characterConfirm = confirm("Do you want special characters?");
         upperCaseConfirm = confirm("Do you want Uppercase letters?");
-        lowerCaseConfirm= confirm("Do you want Lowercase letters?"); };
+        lowerCaseConfirm= confirm("Do you want Lowercase letters?"); 
+    };
 
     //  "if Statement" for 4 negative options
     
     if (!characterConfirm && !numberConfirm && !upperCaseConfirm && !lowerCaseConfirm) {
-            choices = alert("You must choose a criteria!"); }
+            choices = alert("You must choose a criteria!"); 
+    }
 
 
 
     else if (characterConfirm && numberConfirm && upperCaseConfirm && lowerCaseConfirm) {
-            choices = character.concat(number, alpha, alpha2); }
+            choices = character.concat(number, alpha, alpha2); 
+    }
 
 
 
@@ -100,7 +103,7 @@ function generatePassword() {
         choices = space.concat(alpha2);
     };
 // password variable is an array placeholder for user generated amount of length
-    var passwordLength = []
+    var passwordLength = [];
 
    // for loop for random selection of password variables 
 
@@ -108,13 +111,22 @@ function generatePassword() {
         var pickChoices = choices[Math.floor(Math.random() * choices.length)];
         password.push(pickChoices);
 
+        var ps = passwordLength.join("");
+    UserInput(ps);
+    return ps;
+    }
+
 // function to put generated password into the textbox
 function UserInput(ps) {
-    document.getElementById("password").textContent = ps;
+    document.getElementById("password").textContent = ps;}
 
 }
 
-var copy = document.querySelector("#copy");
-copy.addEventListener("click", function () {
-    copyPassword();
-})
+alpha2 = alpha.map(toUpper);
+var get = document.querySelector ("#generate");
+
+get.addEventListener("click", function() {
+    ps = generatePassword();
+    document.getElementById("password").placeholder = ps;
+});
+
