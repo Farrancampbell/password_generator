@@ -65,8 +65,6 @@ function generatePassword() {
      else if (numberConfirm && lowerCaseConfirm && upperCaseConfirm) {
                             choices = number.concat(alpha, alpha2);
     }
-
-
     else if (characterConfirm && numberConfirm) {
         choices = character.concat(number);
 
@@ -86,8 +84,6 @@ function generatePassword() {
         choices = number.concat(alpha2);
     }
     
-    
-
     else if (characterConfirm) {
         choices = character;
     }
@@ -97,19 +93,17 @@ function generatePassword() {
     else if (lowerCaseConfirm) {
         choices = alpha;
     }
-    
-    
     else if (upperCaseConfirm) {
         choices = space.concat(alpha2);
     };
 // password variable is an array placeholder for user generated amount of length
     var passwordLength = [];
 
-   // for loop for random selection of password variables 
+   // for loop password variables 
 
     for (var i = 0; i < enter; i++) {
-        var pickChoices = choices[Math.floor(Math.random() * choices.length)];
-        password.push(pickChoices);
+        var userChoices = choices[Math.floor(Math.random() * choices.length)];
+        passwordLength.push(userChoices);
 
         var ps = passwordLength.join("");
     UserInput(ps);
@@ -130,3 +124,9 @@ get.addEventListener("click", function() {
     document.getElementById("password").placeholder = ps;
 });
 
+
+function copyPassword() {
+    document.getElementById("password").select();
+    document.execCommand("Copy");
+    alert("Password copied to clipboard!");
+}
